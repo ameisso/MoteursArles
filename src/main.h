@@ -10,7 +10,7 @@
 #define PRINT_INTERVAL_MS 500
 float CODER_RESOLUTION = 600.0;
 float CODER_DIAMETER = 40.5;
-
+float CODER_CIRCUM_MM = 131.0;
 long lastPrint = 0;
 
 void setupHardware();
