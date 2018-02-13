@@ -5,7 +5,7 @@
 #define PWM_OUT 3
 #define CODER_A 2
 #define CODER_B 4
-#define CODER_RESOLUTION 600
+#define CODER_RESOLUTION 600.0
 #define MIN_SPEED 81
 #define CODER_DIAMETER 40.5
 
@@ -16,6 +16,7 @@ void setupHardware();
 float getCoderTurns();
 float getCoderDistance();
 int getSerialSpeed();
+void setOrigin();
 Encoder coder(CODER_A, CODER_B);
 
 bool ledState = true;

@@ -31,7 +31,7 @@ void setupHardware()
 
 float getCoderTurns()
 {
-  return coder.read()/CODER_RESOLUTION/4.0;
+  return float(coder.read())/CODER_RESOLUTION/4.0;
 }
 
 int getSerialSpeed()
@@ -40,6 +40,12 @@ int getSerialSpeed()
   {
     int incomingByte = 0;
     incomingByte = Serial.read();
+
+    if(incomingByte == 9 )//TAB
+    {
+      DEBUG_PRINTLN("SET ORIGIN");
+      setOrigin();
+    }
     if (incomingByte != 97)
     {
       incomingByte  = map(incomingByte, 97, 122, MIN_SPEED, 255);
@@ -48,8 +54,7 @@ int getSerialSpeed()
     {
       incomingByte = 0;
     }
-    // DEBUG_PRINT("I received: ");
-    // DEBUG_PRINTLN_CAST (incomingByte,DEC);
+
     return incomingByte;
   }
   return -1;
@@ -58,4 +63,9 @@ int getSerialSpeed()
 float getCoderDistance()
 {
   return getCoderTurns()*CODER_DIAMETER*PI/1000.0;
+}
+
+void setOrigin()
+{
+  coder.write(0);
 }
