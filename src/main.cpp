@@ -5,6 +5,13 @@ void setup()
 {
   setupHardware();
   Serial.begin(115200);
+  while(! Serial)
+  {
+    digitalWrite(LED_BUILTIN,ledState);
+    ledState = ! ledState;
+    delay(500);
+  }
+  DEBUG_PRINTLN("INIT_OK");
 }
 
 

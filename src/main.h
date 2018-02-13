@@ -1,5 +1,6 @@
 #include <Arduino.h>
 #include <Encoder.h>
+#include <PID.h>
 
 #define DEBUG
 #define PWM_OUT 3
