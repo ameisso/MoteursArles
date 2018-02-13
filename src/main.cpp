@@ -16,6 +16,8 @@ void loop()
     DEBUG_PRINT("SPEED: ");
     DEBUG_PRINTLN_CAST (speed,DEC);
     DEBUG_PRINT("CODER: ");
+    DEBUG_PRINT(getCoderTurns());
+    DEBUG_PRINT(" DISTANCE: ");
     DEBUG_PRINTLN(getCoderDistance());
     analogWrite(PWM_OUT,speed);
   }
@@ -62,7 +64,7 @@ int getSerialSpeed()
 
 float getCoderDistance()
 {
-  return getCoderTurns()*CODER_DIAMETER*PI/1000.0;
+  return getCoderTurns()*CODER_DIAMETER*3.14159/1000.0;
 }
 
 void setOrigin()
