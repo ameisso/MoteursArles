@@ -15,11 +15,9 @@ void loop()
   {
     DEBUG_PRINT("SPEED: ");
     DEBUG_PRINTLN_CAST (speed,DEC);
+    DEBUG_PRINT("CODER: ");
+    DEBUG_PRINTLN(getCoderDistance());
     analogWrite(PWM_OUT,speed);
-    delay(delaySpeed);
-    DEBUG_PRINTLN(getCoderTurns());
-    digitalWrite(LED_BUILTIN,ledState);
-    ledState = ! ledState;
   }
 }
 
@@ -55,4 +53,9 @@ int getSerialSpeed()
     return incomingByte;
   }
   return -1;
+}
+
+float getCoderDistance()
+{
+  return getCoderTurns()*CODER_DIAMETER*PI/1000.0;
 }
