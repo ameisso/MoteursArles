@@ -68,7 +68,12 @@ int getSerialSpeed()
 
 float getCoderDistance()
 {
-  return getCoderTurns()*CODER_DIAMETER*3.14159/1000.0;
+  return getCoderTurns()*CODER_CIRCUM_MM/1000.0;
+}
+
+float getCoderAngle()
+{
+  return coder.read()/CODER_RESOLUTION/4.0*360.0;
 }
 
 void setOrigin()
@@ -81,9 +86,14 @@ void printStatus()
   if(millis()-lastPrint > PRINT_INTERVAL_MS)
   {
     lastPrint = millis();
+    DEBUG_PRINT("VALUE: ");
+    DEBUG_PRINT(coder.read()/4.0);
     // DEBUG_PRINT("CODER: ");
     // DEBUG_PRINT(getCoderTurns());
+    DEBUG_PRINT(" ANGLE: ");
+    DEBUG_PRINT(getCoderAngle());
     DEBUG_PRINT(" DISTANCE: ");
     DEBUG_PRINTLN(getCoderDistance());
+
   }
 }

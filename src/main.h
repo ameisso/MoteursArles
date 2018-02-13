@@ -16,6 +16,7 @@ long lastPrint = 0;
 void setupHardware();
 float getCoderTurns();
 float getCoderDistance();
+float getCoderAngle();
 int getSerialSpeed();
 void setOrigin();
 void printStatus();
