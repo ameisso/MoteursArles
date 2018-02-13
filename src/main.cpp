@@ -10,7 +10,7 @@ void setup()
 
 void loop()
 {
-  char speed = getSerialSpeed();
+  int speed = getSerialSpeed();
   if(speed >= 0)
   {
     DEBUG_PRINT("SPEED: ");
