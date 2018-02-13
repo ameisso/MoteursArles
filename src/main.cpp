@@ -17,15 +17,12 @@ void setup()
 
 void loop()
 {
+  printStatus();
   int speed = getSerialSpeed();
   if(speed >= 0)
   {
     DEBUG_PRINT("SPEED: ");
     DEBUG_PRINTLN_CAST (speed,DEC);
-    DEBUG_PRINT("CODER: ");
-    DEBUG_PRINT(getCoderTurns());
-    DEBUG_PRINT(" DISTANCE: ");
-    DEBUG_PRINTLN(getCoderDistance());
     analogWrite(PWM_OUT,speed);
   }
 }
@@ -77,4 +74,16 @@ float getCoderDistance()
 void setOrigin()
 {
   coder.write(0);
+}
+
+void printStatus()
+{
+  if(millis()-lastPrint > PRINT_INTERVAL_MS)
+  {
+    lastPrint = millis();
+    // DEBUG_PRINT("CODER: ");
+    // DEBUG_PRINT(getCoderTurns());
+    DEBUG_PRINT(" DISTANCE: ");
+    DEBUG_PRINTLN(getCoderDistance());
+  }
 }

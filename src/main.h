@@ -7,16 +7,18 @@
 #define CODER_A 2
 #define CODER_B 4
 #define MIN_SPEED 81
+#define PRINT_INTERVAL_MS 500
 float CODER_RESOLUTION = 600.0;
 float CODER_DIAMETER = 40.5;
 
-int delaySpeed = 2000;
+long lastPrint = 0;
 
 void setupHardware();
 float getCoderTurns();
 float getCoderDistance();
 int getSerialSpeed();
 void setOrigin();
+void printStatus();
 Encoder coder(CODER_A, CODER_B);
 
 bool ledState = true;
