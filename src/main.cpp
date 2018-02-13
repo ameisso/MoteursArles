@@ -50,8 +50,8 @@ int getSerialSpeed()
     {
       incomingByte = 0;
     }
-    DEBUG_PRINT("I received: ");
-    DEBUG_PRINTLN_CAST (incomingByte,DEC);
+    // DEBUG_PRINT("I received: ");
+    // DEBUG_PRINTLN_CAST (incomingByte,DEC);
     return incomingByte;
   }
   return -1;
